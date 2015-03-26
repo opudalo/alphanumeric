@@ -1,0 +1,37 @@
+{
+  "name": "alphanumeric",
+  "version": "1.0.",
+  "description": "Random alphanumeric generator",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opudalo.git"
+  },
+  "keywords": [
+    "es6",
+    "micro",
+    "microjs",
+    "alphanumeric"
+  ],
+  "author": {
+    "name": "Eugene Chechurin",
+    "email": "e.chechurin@gmail.com",
+    "url": "https://github.com/opudalo"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/opudalo/alphanumeric",
+  "scripts": {
+    "test-w": "make test-w",
+    "test": "make test"
+  },
+  "devDependencies": {
+    "babel": "^4.6.1",
+    "babel-core": "^4.6.1",
+    "babel-loader": "^4.0.0",
+    "chai": "^2.1.0",
+    "mocha": "^2.1.0",
+    "gulp": "^3.8.11",
+    "gulp-webpack-build": "^0.5.1",
+    "gulp-mocha-phantomjs": "^0.5.3"
+  }
+}

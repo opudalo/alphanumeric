@@ -1,0 +1,19 @@
+{
+  "name": "alphanumeric",
+  "version": "0.0.1",
+  "description": "Random alphanumeric generator",
+  "authors": [
+    "Eugene Chechurin <e.chechurin@gmail.com> (https://github.com/opudalo)"
+  ],
+  "main": "index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/opudalo/alphanumeric",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+  }
+}
+
