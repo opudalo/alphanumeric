@@ -38,7 +38,7 @@ export default function (gulp, rootDir) {
     (cb) => runSequence('clean', ['copy-nonjs', 'build-js'], cb)
   )
 
-  gulp.task('test', ['test-browser'])
+  gulp.task('test', ['test-node'])
 
   gulp.task('test-browser', ['webpack'], () =>
     gulp.src('test/runner.html')

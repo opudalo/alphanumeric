@@ -5,7 +5,7 @@
   "authors": [
     "Eugene Chechurin <e.chechurin@gmail.com> (https://github.com/opudalo)"
   ],
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "license": "MIT",
   "homepage": "https://github.com/opudalo/alphanumeric",
   "ignore": [
