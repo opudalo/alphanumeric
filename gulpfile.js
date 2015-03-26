@@ -1,7 +1,8 @@
 var gulp = require('gulp')
   , git = require('gulp-git')
   , bump = require('gulp-bump')
-  , tag_version = require('gulp-tag-version');
+  , filter = require('gulp-filter')
+  , tag_version = require('gulp-tag-version')
   , webpack = require('gulp-webpack-build')
   , CONFIG_FILENAME = webpack.config.CONFIG_FILENAME
   , mochaPhantomJS = require('gulp-mocha-phantomjs')
@@ -61,5 +62,6 @@ function inc(importance) {
     .pipe(bump({type: importance}))
     .pipe(gulp.dest('./'))
     .pipe(git.commit('version bump'))
+    .pipe(filter('package.json'))
     .pipe(tag_version({ prefix: '' }));
 }
