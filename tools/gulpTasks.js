@@ -21,9 +21,6 @@ export default function (gulp, rootDir) {
         useColors: true
       }
     }
-    , mochaConfig = {
-      reporter: 'spec'
-    }
 
 
   runSequence.use(gulp)
@@ -47,8 +44,9 @@ export default function (gulp, rootDir) {
   )
 
   gulp.task('test-node', () => {
-    gulp.src(['test/**/*.js'])
-      .pipe(mocha(mochaConfig))
+    gulp.src('test/test.js')
+      .pipe(mocha())
+      .on('error', onerror)
   })
 
   gulp.task('webpack', () => {
