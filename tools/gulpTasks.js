@@ -18,10 +18,12 @@ export default function (gulp, rootDir) {
     , lib = `${rootDir}/lib`
     , mochaPhantomConfig = {
       phantomjs: {
-        useColors: true
+        useColors: true,
+        settings: {
+          webSecurityEnabled: false
+        }
       }
     }
-
 
   runSequence.use(gulp)
 
@@ -31,11 +33,13 @@ export default function (gulp, rootDir) {
     gulp.watch([src + '/**/*', test + '/**/*'], ['test'])
   })
 
-  gulp.task('prepublish',
+  gulp.task('prepublish', ['build'])
+
+  gulp.task('build',
     (cb) => runSequence('clean', ['copy-nonjs', 'build-js'], cb)
   )
 
-  gulp.task('test', ['test-node'])
+  gulp.task('test', (cb) => runSequence('build', 'test-browser', cb))
 
   gulp.task('test-browser', ['webpack'], () =>
     gulp.src('test/runner.html')
@@ -44,13 +48,13 @@ export default function (gulp, rootDir) {
   )
 
   gulp.task('test-node', () => {
-    gulp.src('test/test.js')
+    gulp.src(['test/**/*.js'])
       .pipe(mocha())
       .on('error', onerror)
   })
 
   gulp.task('webpack', () => {
-    gulp.src(path.join(tools, 'webpackConfig.js'))
+    var stream = gulp.src(path.join(tools, 'webpackConfig.js'))
       .pipe(webpack.compile())
       .pipe(webpack.format({
         version: false,
@@ -61,6 +65,7 @@ export default function (gulp, rootDir) {
         warnings: true
       }))
       .pipe(gulp.dest(dist))
+    return stream
   })
 
   gulp.task('clean',
@@ -88,7 +93,7 @@ export default function (gulp, rootDir) {
   gulp.task('release', () => inc('major') )
 
   function onerror(err) {
-    console.log(err.toString)
+    console.error(err)
     this.emit('end')
   }
 
